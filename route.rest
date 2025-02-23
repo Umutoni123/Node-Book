@@ -1,0 +1,15 @@
+GET http://localhost:5002/book
+
+
+###
+POST http://localhost:5002/book
+Content-Type: application/json
+
+{
+    "name": "Bible",
+    "bookType": "spiritual"
+}
+
+
+####
+GET http://localhost:5002/book/67ba0a1d9dcc29eb61581dfa
