@@ -31,3 +31,30 @@ exports.createBook = async (req,res) =>{
 exports.getbook = async (req,res) =>{
     res.json(req.book)
 }
+
+
+// Update the books
+
+exports.updateBook = async (req,res) =>{
+    if(req.body.name != null){
+        req.book.name = req.body.name
+    }
+    try {
+       const updatedBook = await req.book.save()
+       res.json(updatedBook) 
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
+
+// Delete a book
+
+exports.deleteBook = async (req,res) =>{
+    try {
+        await req.book.deleteOne();
+        res.json({message: "Book deleted"})
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+}
